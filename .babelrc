@@ -1,0 +1,9 @@
+{
+  "presets": [
+    ["es2015", {"module": false, "loose": true}],
+    "react",
+    "stage-2",
+    "es2016",
+    "es2017"
+  ]
+}

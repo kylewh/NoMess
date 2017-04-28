@@ -1,0 +1,157 @@
+.addTodo-panel {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.26);
+  position: fixed;
+  top: 0px;
+  z-index: 900;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border: none;
+  background-color: #03A9F4;
+  padding-top: 58px;
+  transition: all 0.25s ease;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  background-color: #03A9F4 !important;
+}
+
+@media all and (min-width:640px) {
+  .addTodo-panel {
+    width: 500px;
+    height: 60%;
+    position: fixed;
+    right: 86px;
+    bottom: 66px;
+    top: auto;
+    padding-top: 0px !important;
+    overflow: hidden;
+    border-radius: 3px;
+  }
+}
+
+.addTodo-panel-enter {
+  opacity: 0.01;
+  -webkit-transform: translate3d(0, -20%, 0);
+  transform: translate3d(0, -20%, 0);
+}
+
+.addTodo-panel-enter.addTodo-panel-enter-active {
+  opacity: 1;
+  transition: all 250ms ease;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+.addTodo-panel-leave {
+  opacity: 1;
+}
+
+.addTodo-panel-leave.addTodo-panel-leave-active {
+  opacity: 0.01;
+  transition: all 300ms ease;
+  -webkit-transform: translate3d(0, -20%, 0);
+  transform: translate3d(0, -20%, 0);
+}
+
+.addTodo-panel textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 60%;
+  padding: 20px;
+  outline: none;
+  border: none;
+  resize: none;
+  background-color: transparent;
+  color: #FFFF00;
+  font-size: 18px;
+}
+
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #fff;
+  font-weight: lighter;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #fff;
+  font-weight: lighter;
+}
+
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #fff;
+  font-weight: lighter;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #fff;
+  font-weight: lighter;
+}
+
+.schedulepicker {
+  font-size: 16px;
+  padding: 0px;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  min-height: 56px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+.schedulepicker>div:nth-of-type(1) {
+  -webkit-flex-grow: 2;
+  -ms-flex-positive: 2;
+  flex-grow: 2;
+}
+
+.schedulepicker>div:nth-of-type(2) {
+  -webkit-flex-grow: 4;
+  -ms-flex-positive: 4;
+  flex-grow: 4;
+}
+
+.schedulepicker>div:nth-of-type(3) {
+  -webkit-flex-grow: 2;
+  -ms-flex-positive: 2;
+  flex-grow: 2;
+}
+
+.schedulepicker>div>* {
+  font-weight: lighter;
+  outline: 0;
+  color: #fff;
+  padding: 15px;
+  line-height: 20px;
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  text-align: center;
+}
+
+.schedulepicker>div>*:active {
+  background-color: rgba(115, 130, 155, 0.1) !important;
+}
+
+.datepicker::-webkit-inner-spin-button,
+.datepicker::-webkit-clear-button {
+  display: none;
+}
+
+.addTodo-panel .submit-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: lighter;
+  line-height: 20px;
+  color: #FFFF00;
+}

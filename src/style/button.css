@@ -1,0 +1,17 @@
+.addTodo-btn {
+  transform: scale(1.1);
+  transition: all 0.3s !important;
+}
+.addTodo-btn button:hover {
+ 
+}
+
+.addTodo-btn-active button {
+  transform: rotate(-45deg);
+  background-color: #f44336 !important;
+}
+
+@keyframes bounce {
+  33% { transform: translateY(-5px); }
+  66% { transform: translateY(0px); }
+}
