@@ -1,20 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import classNames from 'classnames'
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 import TodoList from '../components/TodoList'
 import FetchError from '../components/FetchError'
 import * as actions from '../actions'
 import { getVisibleTodos, getErrorMessage, getIsFetching, getCurrentUser } from '../reducers'
-import LinearProgress from 'material-ui/LinearProgress'
 import '../style/visibleList.css'
 
 class VisibleTodoList extends Component {
-  constructor (props) {
-    super(props)
-  }
-
   componentDidMount () {
     this.fetchData()
   }
@@ -49,14 +43,14 @@ class VisibleTodoList extends Component {
   render () {
     const { todos, isLogged, ...rest } = this.props
     const keys = Object.keys(todos)
-    //if ( !todos || !todos.length) return <div></div>
-    return !isLogged ?
-      (
+    // if ( !todos || !todos.length) return <div></div>
+    return !isLogged
+      ? (
         <div className={'scroller not-logged'}>
           Opps...seems you have to login.
         </div>
-      ) :
-      (
+      )
+      : (
         <div
           className={'scroller'}
         >
@@ -102,9 +96,7 @@ const mapStateToProps = (state, { match }) => {
   }
 }
 
-VisibleTodoList = withRouter(connect(
+export default withRouter(connect(
   mapStateToProps,
   actions
 )(VisibleTodoList))
-
-export default VisibleTodoList

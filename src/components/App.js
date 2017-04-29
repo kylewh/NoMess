@@ -7,15 +7,15 @@ import VisibleTodoList from '../containers/VisibleTodoList'
 import BottomBar from './BottomBar'
 
 const App = ({ isLogged }) => {
-  return isLogged ? 
-    (
+  return isLogged
+    ? (
       <div className='todo-main'>
         <AddTodo />
         <VisibleTodoList />
         <BottomBar />
       </div>
     ) : (
-      <Redirect to="/login"/>
+      <Redirect to='/login' />
     )
 }
 

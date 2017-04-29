@@ -5,10 +5,19 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VENDOR_LIST = [
   'react',
   'redux',
+  'redux-logger',
+  'redux-thunk',
   'react-redux',
   'react-dom',
   'react-router-dom',
-  'material-ui'
+  'react-transition-group',
+  'material-ui',
+  'underscore',
+  'normalizr',
+  'node-uuid',
+  'leancloud-storage',
+  'classnames',
+  'history'
 ]
 
 module.exports = {
@@ -20,7 +29,6 @@ module.exports = {
     filename: '[name].[chunkhash].js',
     path: path.resolve(__dirname, 'dist')
   },
-  devtool: 'source-map',
   module: {
     rules: [{
       use: 'babel-loader',

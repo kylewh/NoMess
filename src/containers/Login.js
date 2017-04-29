@@ -3,42 +3,33 @@ import classNames from 'classnames'
 import { connect } from 'react-redux'
 import { login, logOut } from '../actions'
 import { getIsLogging, getLogError, getCurrentUser } from '../reducers'
-// import { getCurrentUser } from '../api'
-import { Redirect } from 'react-router-dom'
-import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
-import '../style/login.css'
-import RaisedButton from 'material-ui/RaisedButton'
 import FlatButton from 'material-ui/FlatButton'
 import RefreshIndicator from 'material-ui/RefreshIndicator'
 import CheckCircle from 'material-ui/svg-icons/action/check-circle'
+import '../style/login.css'
 
-const welcomInterface = (userInfo, onLogoutClick) => {
-  return (
-    <div className='welcome'>
-      <CheckCircle />
-      <p>
-        欢迎回来!                      {userInfo.attributes.username}
-        <br />
-        <br />
-        使用NoMess，立刻开始您的一天规划
-      </p>
-      <FlatButton
-        className='sign-out-btn'
-        label='退出登录'
-        onTouchTap={(e) => {
-          onLogoutClick()
-          console.log(userInfo)
-        }}
-      />
-    </div>
-  )
-}
+const welcomInterface = (userInfo, onLogoutClick) => (
+  <div className='welcome'>
+    <CheckCircle />
+    <p>
+      欢迎回来!                                                                                                      {userInfo.attributes.username}
+      <br />
+      <br />
+      使用NoMess，立刻开始您的一天规划
+    </p>
+    <FlatButton
+      className='sign-out-btn'
+      label='退出登录'
+      onTouchTap={(e) => {
+        onLogoutClick()
+        console.log(userInfo)
+      }}
+    />
+  </div>
+)
 
 class Login extends Component {
-  constructor (props) {
-    super(props)
-  }
 
   errorMsgTranslator (err) {
     switch (err.code) {

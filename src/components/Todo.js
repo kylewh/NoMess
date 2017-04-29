@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { debounce } from 'underscore'
 import classNames from 'classnames'
 import Checkbox from 'material-ui/Checkbox'
-import IconButton from 'material-ui/IconButton'
 import TextField from 'material-ui/TextField'
 import Delete from 'material-ui/svg-icons/content/clear'
 import '../style/todo.css'
@@ -45,7 +44,7 @@ class Todo extends Component {
           onChange={() => {
             this.handleOnChange(this.input.getValue())
           }}
-          ref={(input) => this.input = input}
+          ref={ node => this.input = node}
           className={classNames({
             'todo-item-text': true,
             'completed': completed,

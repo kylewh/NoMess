@@ -38,10 +38,12 @@ const createList = (filter) => {
     }
     switch (action.type) {
       case 'FETCH_TODOS_REQUEST':
-        return state = true
+        state = true
+        return state
       case 'FETCH_TODOS_SUCCESS':
       case 'FETCH_TODOS_FAILURE':
-        return state = false
+        state = false
+        return state
       default:
         return state
     }

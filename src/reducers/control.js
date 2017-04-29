@@ -22,10 +22,12 @@ const isSidebarOpen = (state = false, action) => {
 const isLogging = (state = false, action) => {
   switch (action.type) {
     case 'USER_LOGIN_REQUEST':
-      return state = true
+      state = true
+      return state
     case 'USER_LOGIN_SUCCESS':
     case 'USER_LOGIN_FAILURE':
-      return state = false
+      state = false
+      return state
     default:
       return state
   }

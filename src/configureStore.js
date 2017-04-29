@@ -1,5 +1,3 @@
-import AV from 'leancloud-storage/dist/av'
-import { debounce } from 'underscore'
 import { initLeanCloud } from './api'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { createLogger } from 'redux-logger'
@@ -7,22 +5,27 @@ import thunk from 'redux-thunk'
 import myApp from './reducers'
 
 const configureStore = () => {
-
   initLeanCloud()
 
-  const middlewares = []
-  middlewares.push(thunk)
+  const middlewares = [thunk, createLogger()]
 
-  if (process.env.NODE_ENV !== 'production') {
-    middlewares.push(createLogger())
-  }
+  // if (process.env.NODE_ENV !== 'production') {
+  //   middlewares.push(createLogger())
+  // }
+
+  const enhancers = [
+    applyMiddleware(...middlewares),
+  ]
+
+  const composeEnhancers =
+    process.env.NODE_ENV !== 'production' &&
+    typeof window === 'object' &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
 
   const store = createStore(
     myApp,
-    compose(
-       applyMiddleware(...middlewares),
-       window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-    )
+    composeEnhancers(...enhancers)
   )
 
   return store

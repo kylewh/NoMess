@@ -39,9 +39,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-AddTodo = withRouter(connect(
+export default withRouter(connect(
   mapStateToProps,
   actions
 )(AddTodo))
-
-export default AddTodo

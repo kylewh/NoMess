@@ -54,7 +54,7 @@ export const addTodo = (text, due) => {
   todo.set('text', text)
   todo.set('completed', false)
   todo.set('due', due)
-  todo.set('owner', AV.User.current());
+  todo.set('owner', AV.User.current())
   const addedTodo = todo.save
   return todo.save()
 }

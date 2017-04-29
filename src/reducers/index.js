@@ -30,7 +30,6 @@ export default myApp
  * Selectors
  */
 export const getVisibleTodos = (state, filter) => {
-  
   const ids = fromList.getIds(state.listByFilter[filter])
   const sortedTodos = {}
   // sort todo-list by duedate
