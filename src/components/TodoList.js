@@ -1,21 +1,10 @@
 import React from 'react'
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 import Todo from './Todo'
-import classNames from 'classnames'
-
-
-/**
- * styled-components
- */
-
 import TimeInfo from '../styled/TimeInfo'
 import List from '../styled/List'
 
 const TodoList = ({ dateInfo, todosByDue, toggleTodo, editTodo, deleteTodo }) => {
-  const timeClass = classNames({
-    'time-info': true,
-    'today': dateInfo.offsetDay === '今天'
-  })
   return (
     <CSSTransitionGroup
       component={List}
@@ -29,16 +18,17 @@ const TodoList = ({ dateInfo, todosByDue, toggleTodo, editTodo, deleteTodo }) =>
         <span>{dateInfo.date} {dateInfo.day}</span>
       </TimeInfo>
       {todosByDue.map(todo =>
-        <Todo
-          isToday={dateInfo.offsetDay === '今天'}
-          key={todo.id}
-          name={todo.id}
-          {...todo}
-          handleOnCheck={() => toggleTodo(todo.id)}
-          handleDelete={() => deleteTodo(todo.id)}
-          handleOnChange={editTodo.bind(null, todo.id)}
-        />
-      )}
+          <Todo
+            isToday={dateInfo.offsetDay === '今天'}
+            key={todo.id}
+            name={todo.id}
+            {...todo}
+            handleOnCheck={() => toggleTodo(todo.id)}
+            handleDelete={() => deleteTodo(todo.id)}
+            handleOnChange={editTodo.bind(null, todo.id)}
+          />
+        )
+      }
     </CSSTransitionGroup>
   )
 }

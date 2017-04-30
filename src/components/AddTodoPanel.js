@@ -13,7 +13,7 @@ class AddTodoPanel extends Component {
   }
 
   handleSubmit () {
-    const due = this.datePicker.value
+    const due = new Date(this.datePicker.value)
     this.props.addTodo(this.textarea.value.trim(), due)
   }
 
