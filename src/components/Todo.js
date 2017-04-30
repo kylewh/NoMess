@@ -39,10 +39,6 @@ class Todo extends Component {
           onCheck={handleOnCheck}
         />
         <TodoText
-          className={classNames({
-            today: isToday,
-            completed: completed
-          })}
           name={name}
           defaultValue={text}
           fullWidth

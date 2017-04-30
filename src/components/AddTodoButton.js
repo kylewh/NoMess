@@ -17,7 +17,7 @@ const FloatBtn = styled(({active, ...rest}) =><FloatingActionButton {...rest} />
   position: fixed !important;
   bottom: 84px !important;
   right: 20px !important;
-  zIndex: 100;
+  z-index: 100;
   & button {
     ${props => props.active === true ?
       active : ''

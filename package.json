@@ -28,7 +28,7 @@
     "redux-form": "^6.6.3",
     "redux-logger": "^3.0.1",
     "redux-thunk": "^2.2.0",
-    "styled-components": "^1.4.5",
+    "styled-components": "2.0.0-7",
     "styled-props": "^0.2.0",
     "underscore": "^1.8.3"
   },

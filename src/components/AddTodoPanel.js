@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import TextField from 'material-ui/TextField'
 
 /**
@@ -15,10 +16,18 @@ class AddTodoPanel extends Component {
     super(props)
     this.handleKeyPressSubmit = this.handleKeyPressSubmit.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.quickPick = this.quickPick.bind(this)
   }
 
   componentDidMount () {
     this.datePicker.value = this.injectDate()
+    this.options = this.select.getElementsByTagName('option')
+    console.log(this.options)
+    this.select.addEventListener('click',function(e){
+      if (e.target.tagName === 'OPTION') {
+        console.log('hiiiii')
+      }
+    })
   }
 
   handleSubmit () {
@@ -37,6 +46,13 @@ class AddTodoPanel extends Component {
     return new Date().toJSON().slice(0, 10)
   }
 
+  quickPick () {
+    let msec = +new Date(this.datePicker.value) - 0
+    const diff = this.select.value*24*3600*1000
+    msec += diff
+    this.datePicker.value = new Date(msec).toJSON().slice(0,10)
+  }
+
   render () {
     return (
       <Panel className='addTodo-panel'>
@@ -51,6 +67,9 @@ class AddTodoPanel extends Component {
             <select
               className='bw-daypicker'
               defaultValue={8}
+              ref={node => this.select = node}
+              onClick={() => console.log('selected!!!')}
+              onChange={this.quickPick}
             >
               <option value='0'>&nbsp;今天 星期二 </option>
               <option value='1'>&nbsp;明天 星期三</option>
@@ -60,7 +79,7 @@ class AddTodoPanel extends Component {
               <option value='5'>第六天 星期日</option>
               <option value='6'>第七天 星期一</option>
               <option value='7'>下周今天 星期二</option>
-              <option value='8' >快速选择</option>
+              <option value='0' >快速选择</option>
             </select>
           </div>
 
