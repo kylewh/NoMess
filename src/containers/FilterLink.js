@@ -1,11 +1,9 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import { BottomNavigationItem } from 'material-ui/BottomNavigation'
 import EventBusy from 'material-ui/svg-icons/notification/event-busy'
 import EventNote from 'material-ui/svg-icons/notification/event-note'
 import EventAvailable from 'material-ui/svg-icons/notification/event-available'
-
-import '../style/FilterLink.css'
+import BottomNavLink from '../styled/BottomNavLink'
 
 const FilterLink = ({ filter }) => {
   const mapFilterToItemConfig = () => {
@@ -31,7 +29,7 @@ const FilterLink = ({ filter }) => {
   const { label, icon } = mapFilterToItemConfig()
 
   return (
-    <NavLink
+    <BottomNavLink
       to={!filter ? '/all' : `/${filter}`}
       exact
       activeClassName={'btn-active'}
@@ -40,7 +38,7 @@ const FilterLink = ({ filter }) => {
         label={label}
         icon={icon}
       />
-    </NavLink>
+    </BottomNavLink>
   )
 }
 

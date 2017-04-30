@@ -7,15 +7,14 @@ import VisibleTodoList from '../containers/VisibleTodoList'
 import BottomBar from './BottomBar'
 
 class Main extends Component {
-  
-  componentDidMount() {
+  componentDidMount () {
     console.log('main loaded')
   }
 
-  render() {
+  render () {
     const { isLogged } = this.props
-    return isLogged ? 
-      (
+    return isLogged
+      ? (
         <div className='todo-main'>
           <AddTodo />
           <VisibleTodoList />

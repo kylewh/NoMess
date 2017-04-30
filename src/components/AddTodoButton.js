@@ -9,7 +9,7 @@ const active = css`
   background-color: #f44336 !important;
 `
 
-const FloatBtn = styled(({active, ...rest}) =><FloatingActionButton {...rest} />)`
+const FloatBtn = styled(({active, ...rest}) => <FloatingActionButton {...rest} />)`
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
   -webkit-transition: all 0.3s !important;
@@ -19,8 +19,8 @@ const FloatBtn = styled(({active, ...rest}) =><FloatingActionButton {...rest} />
   right: 20px !important;
   z-index: 100;
   & button {
-    ${props => props.active === true ?
-      active : ''
+    ${props => props.active === true
+      ? active : ''
     }
   }
 `

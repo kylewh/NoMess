@@ -1,4 +1,3 @@
-import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 const fadeInUp = keyframes`
@@ -40,8 +39,11 @@ const LoginForm = styled.form`
     left: 30px;
     bottom: -30px;
     border-radius: 5px;
-    -webkit-animation: 1s ease-in fadeInUp;
-    animation: 1s ease-in fadeInUp;
+    -webkit-animation: 1s ease-in ${fadeInUp};
+    animation: 1s ease-in ${fadeInUp};
+  }
+  & input:-webkit-autofill {
+    -webkit-box-shadow: inset 0 0 0px 9999px white !important;
   }
 `
 

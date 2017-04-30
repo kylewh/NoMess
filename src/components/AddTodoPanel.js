@@ -1,15 +1,9 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-import TextField from 'material-ui/TextField'
-
-/**
- * Styled-Components
- */
-
 import Panel from '../styled/Panel'
 import Textarea from '../styled/Textarea'
 import Schedule from '../styled/Schedule'
 import DatePicker from '../styled/DatePicker'
+import SubmitBtn from '../styled/SubmitBtn'
 
 class AddTodoPanel extends Component {
   constructor (props) {
@@ -21,13 +15,6 @@ class AddTodoPanel extends Component {
 
   componentDidMount () {
     this.datePicker.value = this.injectDate()
-    this.options = this.select.getElementsByTagName('option')
-    console.log(this.options)
-    this.select.addEventListener('click',function(e){
-      if (e.target.tagName === 'OPTION') {
-        console.log('hiiiii')
-      }
-    })
   }
 
   handleSubmit () {
@@ -48,9 +35,9 @@ class AddTodoPanel extends Component {
 
   quickPick () {
     let msec = +new Date(this.datePicker.value) - 0
-    const diff = this.select.value*24*3600*1000
+    const diff = this.select.value * 24 * 3600 * 1000
     msec += diff
-    this.datePicker.value = new Date(msec).toJSON().slice(0,10)
+    this.datePicker.value = new Date(msec).toJSON().slice(0, 10)
   }
 
   render () {
@@ -65,10 +52,8 @@ class AddTodoPanel extends Component {
         <Schedule>
           <div>
             <select
-              className='bw-daypicker'
               defaultValue={8}
               ref={node => this.select = node}
-              onClick={() => console.log('selected!!!')}
               onChange={this.quickPick}
             >
               <option value='0'>&nbsp;今天 星期二 </option>
@@ -79,7 +64,7 @@ class AddTodoPanel extends Component {
               <option value='5'>第六天 星期日</option>
               <option value='6'>第七天 星期一</option>
               <option value='7'>下周今天 星期二</option>
-              <option value='0' >快速选择</option>
+              <option value='8' >快速选择</option>
             </select>
           </div>
 
@@ -87,12 +72,11 @@ class AddTodoPanel extends Component {
             <DatePicker
               innerRef={node => this.datePicker = node}
               type='date'
-              />
+            />
           </div>
 
           <div>
-            <input
-              className='submit-btn'
+            <SubmitBtn
               type='button'
               value='添加'
               onClick={this.handleSubmit}

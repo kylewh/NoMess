@@ -1,4 +1,4 @@
-// Control 
+// Control
 export const TOGGLE_ADD_TODO = 'TOGGLE_ADD_TODO'
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR'
 

@@ -1,6 +1,4 @@
-import React from 'react'
 import styled, { keyframes, css } from 'styled-components'
-
 
 const pulse = keyframes`
   from {
@@ -30,8 +28,8 @@ const LoginInfo = styled.span`
   padding: 30px 0px 15px 0px;
   font-size: 1.2rem;
   color: #03A9F4;
-  ${ props => !!props.error == true ?
-    error : ''
+  ${props => !!props.error === true
+    ? error : ''
   }
 `
 

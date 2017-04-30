@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { IconMenu, MenuItem, IconButton, FlatButton } from 'material-ui'
 import * as fromMaterial from 'material-ui'
 
 const TopBar = styled(fromMaterial.AppBar)`

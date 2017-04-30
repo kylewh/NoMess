@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import CheckCircle from 'material-ui/svg-icons/action/check-circle'
-import FlatButton from 'material-ui/FlatButton'
 import Button from '../styled/Button'
 
 const WelcomeDIV = styled.div`
@@ -39,6 +38,5 @@ const Welcome = ({isLogged, username, onLogoutClick}) => (
     />
   </WelcomeDIV>
 )
-
 
 export default Welcome

@@ -9,16 +9,16 @@ const TodoText = styled(({redText, lineThrough, ...rest}) => <TextField {...rest
   flex-grow: 1;
   color: #424242;
   &.completed textarea {
-    color: ${props => props.lineThrough === true ?
-      '#BDBDBD !important' : '#757575 !important'
+    color: ${props => props.lineThrough === true
+      ? '#BDBDBD !important' : '#757575 !important'
     };
-    text-decoration: ${props => props.lineThrough === true ?
-      'line-through !important' : 'none'
+    text-decoration: ${props => props.lineThrough === true
+      ? 'line-through !important' : 'none'
     }
   };
   &.today textarea {
-    color: ${props => props.redText === true ?
-      '#ec9494 !important' : '#757575 !important'
+    color: ${props => props.redText === true
+      ? '#ec9494 !important' : '#757575 !important'
     };
   };
   & textarea:focus {

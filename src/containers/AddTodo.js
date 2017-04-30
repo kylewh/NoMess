@@ -6,7 +6,6 @@ import AddTodoButton from '../components/AddTodoButton'
 import AddTodoPanel from '../components/AddTodoPanel'
 import { getIsAdding } from '../reducers'
 import * as actions from '../actions'
-import '../style/panel.css'
 
 class AddTodo extends Component {
   render () {

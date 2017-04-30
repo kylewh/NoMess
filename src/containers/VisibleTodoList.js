@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 import * as actions from '../actions'
-import { getVisibleTodos, getErrorMessage, getIsFetching, getCurrentUser } from '../reducers'
+import { getVisibleTodos, getErrorMessage, getIsFetching } from '../reducers'
 import TodoList from '../components/TodoList'
 import Scroller from '../styled/Scroller'
 import ListContainer from '../styled/ListContainer'
@@ -44,31 +44,31 @@ class VisibleTodoList extends Component {
     const { todos, ...rest } = this.props
     const keys = Object.keys(todos)
     return (
-        <Scroller>
-          <CSSTransitionGroup
-            component={ListContainer}
-            transitionName='todo-list-ct'
-            transitionEnterTimeout={300}
-            transitionLeaveTimeout={250}
+      <Scroller>
+        <CSSTransitionGroup
+          component={ListContainer}
+          transitionName='todo-list-ct'
+          transitionEnterTimeout={300}
+          transitionLeaveTimeout={250}
           >
-            {keys.map(key => {
-                const dateInfo = {
-                  offsetDay: this.printOffsetDay(new Date(key)),
-                  date: key.slice(0, 10),
-                  day: this.printDay(new Date(key))
-                }
-                return (
-                  <TodoList
-                    key={key}
-                    dateInfo={dateInfo}
-                    todosByDue={todos[key]}
-                    {...rest}
+          {keys.map(key => {
+            const dateInfo = {
+              offsetDay: this.printOffsetDay(new Date(key)),
+              date: key.slice(0, 10),
+              day: this.printDay(new Date(key))
+            }
+            return (
+              <TodoList
+                key={key}
+                dateInfo={dateInfo}
+                todosByDue={todos[key]}
+                {...rest}
                   />
-                )
-              })}
-          </CSSTransitionGroup>
-        </Scroller>
-      )
+            )
+          })}
+        </CSSTransitionGroup>
+      </Scroller>
+    )
   }
 }
 

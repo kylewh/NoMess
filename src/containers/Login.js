@@ -1,15 +1,8 @@
 import React, { Component } from 'react'
-import classNames from 'classnames'
 import { connect } from 'react-redux'
 import { login, logOut } from '../actions'
 import { getIsLogging, getLogError, getCurrentUser } from '../reducers'
 import TextField from 'material-ui/TextField'
-import '../style/login.css'
-
-/**
- * styled-component
- */
-
 import Overlay from '../styled/Overlay'
 import LoginForm from '../styled/LoginForm'
 import LoginInfo from '../styled/LoginInfo'
@@ -18,8 +11,7 @@ import Welcome from '../styled/Welcome'
 import LoginIndicator from '../styled/LoginIndicator'
 
 class Login extends Component {
-
-  errorMsgTranslator (err) {    
+  errorMsgTranslator (err) {
     switch (err.code) {
       case -1:
         return '您的网络貌似断线了 T_T'
@@ -34,12 +26,12 @@ class Login extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     console.log('login loaded')
   }
 
   componentWillReceiveProps (nextProps) {
-    if(this.props.isLogged !== nextProps.isLogged) {
+    if (this.props.isLogged !== nextProps.isLogged) {
       this.props.history.push('/')
     }
   }

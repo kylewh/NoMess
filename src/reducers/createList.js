@@ -6,7 +6,7 @@ import {
   DELETE_TODO_FAILURE,
   FETCH_TODOS_REQUEST,
   FETCH_TODOS_SUCCESS,
-  FETCH_TODOS_FAILURE,
+  FETCH_TODOS_FAILURE
 } from '../constant'
 
 const createList = (filter) => {

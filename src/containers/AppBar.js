@@ -4,11 +4,6 @@ import { withRouter } from 'react-router-dom'
 import * as actions from '../actions'
 import { getIsFetching, getCurrentUser } from '../reducers'
 import { FlatButton } from 'material-ui'
-
-
-/**
- * styled components
- */
 import ProgressBar from '../styled/ProgressBar'
 import TopBar from '../styled/TopBar'
 import NavButton from '../styled/NavButton'
@@ -23,23 +18,20 @@ const Login = (props) => {
 Login.muiName = 'FlatButton'
 NavButton.muiName = 'AppBar'
 
-const AppBar = ({toggleSideBar, isFetching, isLogged}) => {
-  console.log(isFetching)
-  return (
-    <div className={'todo-appbar'}>
-      {isFetching ?
-        (<ProgressBar />) : ''
+const AppBar = ({toggleSideBar, isFetching, isLogged}) => (
+  <div className={'todo-appbar'}>
+    {isFetching
+      ? (<ProgressBar />) : ''
+    }
+    <TopBar
+      title={'Say no to mess'}
+      iconElementLeft={
+        <NavButton onClick={toggleSideBar} />
       }
-      <TopBar
-        title={'Say no to mess'}
-        iconElementLeft={
-          <NavButton onClick={toggleSideBar} />
-        }
-        iconElementRight={isLogged ? <Logged /> : <Login />}
-      />
-    </div>
-  )
-}
+      iconElementRight={isLogged ? <Logged /> : <Login />}
+    />
+  </div>
+)
 
 const mapStateToProps = (state, { match }) => ({
   isFetching: getIsFetching(state, match.params.filter || 'all'),

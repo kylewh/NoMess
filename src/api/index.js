@@ -54,7 +54,6 @@ export const addTodo = (text, due) => {
   todo.set('completed', false)
   todo.set('due', due)
   todo.set('owner', AV.User.current())
-  const addedTodo = todo.save
   return todo.save()
 }
 
@@ -93,7 +92,7 @@ export const deleteTodo = (id) => {
     })
 }
 
-export const signUp = (username,password) => {
+export const signUp = (username, password) => {
   const newUser = new AV.User()
   newUser.setUsername(username)
   newUser.setPassword(password)

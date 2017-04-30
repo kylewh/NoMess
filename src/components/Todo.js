@@ -1,44 +1,31 @@
 import React, { Component } from 'react'
 import { debounce } from 'underscore'
 import classNames from 'classnames'
-import Checkbox from 'material-ui/Checkbox'
-import TextField from 'material-ui/TextField'
-import Delete from 'material-ui/svg-icons/content/clear'
-import '../style/todo.css'
-
-
-/**
- * Styled-component
- */
 import TodoItem from '../styled/TodoItem'
 import TodoCheckBox from '../styled/TodoCheckBox'
 import TodoText from '../styled/TodoText'
 import DeleteBtn from '../styled/DeleteBtn'
 
 class Todo extends Component {
-
   constructor (props) {
     super(props)
     this.handleOnChange = debounce(this.props.handleOnChange, 500)
   }
 
   render () {
-    const {
-      isToday,
-      handleOnCheck,
-      completed,
-      handleDelete,
-      text,
-      name
-    } = this.props
+    const { isToday, handleOnCheck, completed, handleDelete, text, name } = this.props
 
     return (
-      <TodoItem className={'todo-item'}>
+      <TodoItem>
         <TodoCheckBox
           defaultChecked={completed}
           onCheck={handleOnCheck}
         />
         <TodoText
+          className={classNames({
+            completed: completed,
+            today: isToday
+          })}
           name={name}
           defaultValue={text}
           fullWidth
@@ -51,7 +38,7 @@ class Todo extends Component {
           onChange={() => {
             this.handleOnChange(this.input.getValue())
           }}
-          innerRef={ node => this.input = node}
+          innerRef={node => this.input = node}
         />
         <DeleteBtn
           onClick={handleDelete}

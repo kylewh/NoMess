@@ -29,8 +29,8 @@ const TimeInfo = styled.li`
     color: #9e9e9e;
   }
   & em{
-    ${props => props.today === true ?
-    today : ''}
+    ${props => props.today === true
+    ? today : ''}
   }
   & span {
     position: absolute;

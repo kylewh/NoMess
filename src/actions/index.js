@@ -1,7 +1,6 @@
 import * as api from '../api'
 import * as schema from './schema'
 import { normalize } from 'normalizr'
-import AV from 'leancloud-storage/dist/av'
 import { getIsFetching } from '../reducers'
 
 // All action types will be stored at ../constant/action.js

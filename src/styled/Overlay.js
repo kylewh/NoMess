@@ -5,8 +5,8 @@ const Overlay = styled.div`
   background-position: center;
   height: 100vh;
   width: 100vw;
-  background-image: ${ props => props.login ?
-    `url('http://om8hmotom.bkt.clouddn.com/hot-air-balloon-35248-2560x1600.webp')`
+  background-image: ${props => props.login
+    ? `url('http://om8hmotom.bkt.clouddn.com/hot-air-balloon-35248-2560x1600.webp')`
     : 'none'
   };
 `
