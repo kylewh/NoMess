@@ -8,6 +8,13 @@ import * as actions from '../actions'
 import { getVisibleTodos, getErrorMessage, getIsFetching, getCurrentUser } from '../reducers'
 import '../style/visibleList.css'
 
+
+/**
+ * Styled-components
+ */
+import Scroller from '../styled/Scroller'
+import ListContainer from '../styled/ListContainer'
+
 class VisibleTodoList extends Component {
   componentDidMount () {
     this.fetchData()
@@ -41,45 +48,34 @@ class VisibleTodoList extends Component {
   }
 
   render () {
-    const { todos, isLogged, ...rest } = this.props
+    const { todos, ...rest } = this.props
     const keys = Object.keys(todos)
-    // if ( !todos || !todos.length) return <div></div>
-    return !isLogged
-      ? (
-        <div className={'scroller not-logged'}>
-          Opps...seems you have to login.
-        </div>
-      )
-      : (
-        <div
-          className={'scroller'}
-        >
+
+    return (
+        <Scroller>
           <CSSTransitionGroup
-            component='div'
-            className='todo-list-ct'
+            component={ListContainer}
             transitionName='todo-list-ct'
             transitionEnterTimeout={300}
             transitionLeaveTimeout={250}
           >
-            {
-            keys.map(key => {
-              const dateInfo = {
-                offsetDay: this.printOffsetDay(new Date(key)),
-                date: key.slice(0, 10),
-                day: this.printDay(new Date(key))
-              }
-              return (
-                <TodoList
-                  key={key}
-                  dateInfo={dateInfo}
-                  todosByDue={todos[key]}
-                  {...rest}
-                />
-              )
-            })
-          }
+            {keys.map(key => {
+                const dateInfo = {
+                  offsetDay: this.printOffsetDay(new Date(key)),
+                  date: key.slice(0, 10),
+                  day: this.printDay(new Date(key))
+                }
+                return (
+                  <TodoList
+                    key={key}
+                    dateInfo={dateInfo}
+                    todosByDue={todos[key]}
+                    {...rest}
+                  />
+                )
+              })}
           </CSSTransitionGroup>
-        </div>
+        </Scroller>
       )
   }
 }
@@ -91,7 +87,6 @@ const mapStateToProps = (state, { match }) => {
     todos: getVisibleTodos(state, filter),
     errorMessage: getErrorMessage(state, filter),
     isFecthing: getIsFetching(state, filter),
-    isLogged: getCurrentUser(state),
     filter
   }
 }

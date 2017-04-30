@@ -17,7 +17,8 @@ const VENDOR_LIST = [
   'node-uuid',
   'leancloud-storage',
   'classnames',
-  'history'
+  'history',
+  'styled-components'
 ]
 
 module.exports = {
@@ -50,7 +51,6 @@ module.exports = {
   resolve: {
     extensions: ['.json', '.js', '.jsx', '.css']
   },
-
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest']

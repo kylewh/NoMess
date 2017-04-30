@@ -1,4 +1,13 @@
 import { combineReducers } from 'redux'
+import {
+  ADD_TODO_SUCCESS,
+  TOGGLE_TODO_SUCCESS,
+  DELETE_TODO_SUCCESS,
+  DELETE_TODO_FAILURE,
+  FETCH_TODOS_REQUEST,
+  FETCH_TODOS_SUCCESS,
+  FETCH_TODOS_FAILURE,
+} from '../constant'
 
 const createList = (filter) => {
   const handleToggle = (state, action) => {
@@ -15,17 +24,17 @@ const createList = (filter) => {
 
   const ids = (state = [], action) => {
     switch (action.type) {
-      case 'FETCH_TODOS_SUCCESS':
+      case FETCH_TODOS_SUCCESS:
         return filter === action.filter
           ? action.response.result
           : state
-      case 'ADD_TODO_SUCCESS':
+      case ADD_TODO_SUCCESS:
         return filter !== 'completed'
           ? [...state, action.response.result]
           : state
-      case 'TOGGLE_TODO_SUCCESS':
+      case TOGGLE_TODO_SUCCESS:
         return handleToggle(state, action)
-      case 'DELETE_TODO_SUCCESS':
+      case DELETE_TODO_SUCCESS:
         return state.filter(id => id !== action.id)
       default:
         return state
@@ -37,11 +46,11 @@ const createList = (filter) => {
       return state
     }
     switch (action.type) {
-      case 'FETCH_TODOS_REQUEST':
+      case FETCH_TODOS_REQUEST:
         state = true
         return state
-      case 'FETCH_TODOS_SUCCESS':
-      case 'FETCH_TODOS_FAILURE':
+      case FETCH_TODOS_SUCCESS:
+      case FETCH_TODOS_FAILURE:
         state = false
         return state
       default:
@@ -54,11 +63,11 @@ const createList = (filter) => {
       return state
     }
     switch (action.type) {
-      case 'FETCH_TODOS_FAILURE':
-      case 'DELETE_TODO_FAILURE':
+      case FETCH_TODOS_FAILURE:
+      case DELETE_TODO_FAILURE:
         return action.message
-      case 'FETCH_TODOS_REQUEST':
-      case 'FETCH_TODOS_SUCCESS':
+      case FETCH_TODOS_REQUEST:
+      case FETCH_TODOS_SUCCESS:
         return null
       default:
         return state

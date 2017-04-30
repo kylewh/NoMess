@@ -1,26 +1,26 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router'
-import { getCurrentUser } from '../reducers'
-import AddTodo from '../containers/AddTodo'
-import VisibleTodoList from '../containers/VisibleTodoList'
-import BottomBar from './BottomBar'
+import { Route, Switch } from 'react-router-dom'
+import Sidebar from '../containers/Sidebar'
+import AppBar from '../containers/AppBar'
+import Login from '../containers/Login.js'
+import Main from './Main.js'
 
-const App = ({ isLogged }) => {
-  return isLogged
-    ? (
-      <div className='todo-main'>
-        <AddTodo />
-        <VisibleTodoList />
-        <BottomBar />
-      </div>
-    ) : (
-      <Redirect to='/login' />
-    )
-}
+const App = () => (
+  <div className='app'>
+    <AppBar />
+    <Sidebar />
+    <Switch>
+      <Route
+        path='/login'
+        component={Login}
+      />
+      <Route
+        path='/:filter?'
+        component={Main}
+        exact
+      />
+    </Switch>
+  </div>
+)
 
-const mapStateToProps = (state) => ({
-  isLogged: getCurrentUser(state)
-})
-
-export default connect(mapStateToProps)(App)
+export default App

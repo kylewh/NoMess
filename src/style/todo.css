@@ -4,7 +4,7 @@ li {
   padding: 0;
   list-style: none;
 }
-
+/*
 .todo-item {
   background-color: white;
   -webkit-transition: all 0.25s ease;
@@ -12,10 +12,12 @@ li {
   margin-left: 0px;
   padding-left: 10px;
   padding-right: 4px;
-  display: -webkit-flex;
   display: -ms-flexbox;
+  display: -webkit-box;
   display: flex;
   word-break: break-all;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   border-bottom: 1px solid #f5f5f5;
 }
@@ -29,10 +31,11 @@ li {
 }
 
 .todo-item a {
-  display: -webkit-flex;
   display: -ms-flexbox;
+  display: -webkit-box;
   display: flex;
   padding: 12px;
+  -ms-flex-line-pack: center;
   align-content: center;
   border-radius: 50%;
 }
@@ -41,9 +44,10 @@ li {
   background-color: #f5f5f5;
 }
 
-
 .todo-item-text {
   font-size: 16px;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
   flex-grow: 1;
   color: #424242;
 }
@@ -51,6 +55,7 @@ li {
 .todo-item-text textarea {
   color: #757575 !important;
 }
+
 .todo-item-text.today textarea {
   color: #ec9494 !important;
 }
@@ -59,7 +64,7 @@ li {
   font-weight: 400 !important;
 }
 
-.todo-item .completed textarea{
+.todo-item .completed textarea {
   text-decoration: line-through !important;
   color: #BDBDBD !important;
 }
@@ -67,15 +72,18 @@ li {
 .todo-item-delete {
   display: none !important;
   fill: #f44336 !important;
+  -webkit-transition: all 200ms cubic-bezier(0.23, 1, 0.32, 1) 0ms !important;
   transition: all 200ms cubic-bezier(0.23, 1, 0.32, 1) 0ms !important;
 }
 
 .check-box,
 .todo-item-text,
 .todo-item-delete {
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
   align-self: center;
 }
 
 .todo-item:hover .todo-item-delete {
   display: inline-block !important;
-}
+}*/

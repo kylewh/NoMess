@@ -1,11 +1,8 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import createHistory from 'history/createBrowserHistory'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import App from './App'
-import AppBar from '../containers/AppBar'
-import Sidebar from '../containers/Sidebar'
-import Login from '../containers/Login'
 import { lightBlueA400, white } from 'material-ui/styles/colors'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import injectTapEventPlugin from 'react-tap-event-plugin'
@@ -17,6 +14,7 @@ injectTapEventPlugin()
 /**
  * Material-ui default style config
  */
+
 const muiTheme = getMuiTheme({
   palette: {
     fontFamily: 'Roboto',
@@ -32,30 +30,24 @@ const muiTheme = getMuiTheme({
   }
 })
 
-const Root = ({ store }) => {
-  return (
-    <MuiThemeProvider muiTheme={muiTheme}>
-      <Provider store={store} >
-        <Router history={createHistory()}>
-          <div className='app'>
-            <AppBar />
-            <Sidebar />
-            <Switch>
-              <Route
-                path='/login'
-                component={Login}
-              />
-              <Route
-                path='/:filter?'
-                component={App}
-                exact
-              />
-            </Switch>
-          </div>
-        </Router>
-      </Provider>
-    </MuiThemeProvider>
-  )
+class Root extends Component {
+
+  componentDidMount () {
+    console.log('app loaded')
+  }
+
+  render() {
+    const { store } = this.props
+    return (
+      <MuiThemeProvider muiTheme={muiTheme}>
+        <Provider store={store} >
+          <Router history={createHistory()}>
+            <App />
+          </Router>
+        </Provider>
+      </MuiThemeProvider>
+    )
+  }
 }
 
 export default Root

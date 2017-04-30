@@ -1,7 +1,4 @@
 const byId = (state = {}, action) => {
-  // if (action.type === 'USER_LOGOUT_SUCCESS') {
-  //   return state = {}
-  // }
   if (action.response) {
     return {
       ...state,

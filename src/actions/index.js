@@ -4,6 +4,9 @@ import { normalize } from 'normalizr'
 import AV from 'leancloud-storage/dist/av'
 import { getIsFetching } from '../reducers'
 
+// All action types will be stored at ../constant/action.js
+// in case of typo
+
 export const toggleAddToDo = () => ({
   type: 'TOGGLE_ADD_TODO'
 })
@@ -110,12 +113,22 @@ export const login = (username, password) => (dispatch) => {
 
   api.login(username, password)
     .then(loginedUser => {
-      console.log(AV.User.current())
       dispatch({
         type: 'USER_LOGIN_SUCCESS',
         loginedUser
       })
-    }).catch(res => {
+    })
+    .catch(res => {
+      if (res.code === 211) {
+        console.log('无法找到用户，我们将为您注册，请注意您将会使用输入的用户名登录。')
+        return api.signUp(username, password)
+          .then(signedUser => {
+            dispatch({
+              type: 'USER_LOGIN_SUCCESS',
+              loginedUser: signedUser
+            })
+          })
+      }
       dispatch({
         type: 'USER_LOGIN_FAILURE',
         error: res

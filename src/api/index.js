@@ -7,7 +7,6 @@ export const initLeanCloud = () => {
   const appId = 'fHlQK5K3zQdGFO0h4jPg7Azk-gzGzoHsz'
   const appKey = 'Tpz60WuMnnBGJGh3hr6os321'
   AV.init({ appId, appKey })
-  console.log('init done')
 }
 
 export const fetchTodos = (filter) => {
@@ -86,7 +85,6 @@ export const toggleTodo = (id) => {
 }
 
 export const deleteTodo = (id) => {
-  console.log(id)
   return AV.Query.doCloudQuery(`delete from Todos where objectId="${id}"`)
     .then(function (res) {
       return res
@@ -95,21 +93,11 @@ export const deleteTodo = (id) => {
     })
 }
 
-export const signUp = ({
-  username,
-  password
-}) => {
-  const newUser = new AV.user()
+export const signUp = (username,password) => {
+  const newUser = new AV.User()
   newUser.setUsername(username)
   newUser.setPassword(password)
-  return newUser.signUp().then(loginedUser => {
-    console.log(loginedUser)
-  }).catch(res => {
-    switch (res.code) {
-      case 202:
-        return '用户名已被占用'
-    }
-  })
+  return newUser.signUp()
 }
 
 export const login = (username, password) => {

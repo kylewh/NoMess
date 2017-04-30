@@ -1,9 +1,17 @@
 import { combineReducers } from 'redux'
+import {
+  TOGGLE_SIDEBAR,
+  TOGGLE_ADD_TODO,
+  ADD_TODO_SUCCESS,
+  USER_LOGIN_REQUEST,
+  USER_LOGIN_SUCCESS,
+  USER_LOGIN_FAILURE,
+} from '../constant'
 
 const isAdding = (state = false, action) => {
   switch (action.type) {
-    case 'TOGGLE_ADD_TODO':
-    case 'ADD_TODO_SUCCESS':
+    case TOGGLE_ADD_TODO:
+    case ADD_TODO_SUCCESS:
       return !state
     default:
       return state
@@ -12,7 +20,7 @@ const isAdding = (state = false, action) => {
 
 const isSidebarOpen = (state = false, action) => {
   switch (action.type) {
-    case 'TOGGLE_SIDEBAR':
+    case TOGGLE_SIDEBAR:
       return !state
     default:
       return state
@@ -21,11 +29,11 @@ const isSidebarOpen = (state = false, action) => {
 
 const isLogging = (state = false, action) => {
   switch (action.type) {
-    case 'USER_LOGIN_REQUEST':
+    case USER_LOGIN_REQUEST:
       state = true
       return state
-    case 'USER_LOGIN_SUCCESS':
-    case 'USER_LOGIN_FAILURE':
+    case USER_LOGIN_SUCCESS:
+    case USER_LOGIN_FAILURE:
       state = false
       return state
     default:

@@ -14,7 +14,7 @@ const TodoList = ({ dateInfo, todosByDue, toggleTodo, editTodo, deleteTodo }) =>
       component='ul'
       className='todo-list'
       transitionName='add-remove-item'
-      transitionEnterTimeout={300}
+      transitionEnterTimeout={250}
       transitionLeaveTimeout={250}
     >
       <li className={timeClass}>

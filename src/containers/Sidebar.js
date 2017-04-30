@@ -37,6 +37,7 @@ const Sidebar = ({isSidebarOpen, toggleSideBar, isLogged}) => {
             style={{}}
             primaryText={isLogged ? isLogged.attributes.username : '登录'}
             leftIcon={<Account />}
+            onClick={toggleSideBar}
           />
         </NavLink>
         <NavLink
@@ -46,8 +47,9 @@ const Sidebar = ({isSidebarOpen, toggleSideBar, isLogged}) => {
           }}
         >
           <MenuItem
-            primaryText='全部事项'
+            primaryText={isLogged ? '全部事项' : '全部事项(请先登录)'}
             leftIcon={<MainList />}
+            onClick={toggleSideBar}
            />
         </NavLink>
       </Drawer>

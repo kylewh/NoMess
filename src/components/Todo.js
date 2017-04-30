@@ -6,7 +6,17 @@ import TextField from 'material-ui/TextField'
 import Delete from 'material-ui/svg-icons/content/clear'
 import '../style/todo.css'
 
+
+/**
+ * Styled-component
+ */
+import TodoItem from '../styled/TodoItem'
+import TodoCheckBox from '../styled/TodoCheckBox'
+import TodoText from '../styled/TodoText'
+import DeleteBtn from '../styled/DeleteBtn'
+
 class Todo extends Component {
+
   constructor (props) {
     super(props)
     this.handleOnChange = debounce(this.props.handleOnChange, 500)
@@ -23,47 +33,34 @@ class Todo extends Component {
     } = this.props
 
     return (
-      <li className={'todo-item'}>
-        <Checkbox
+      <TodoItem className={'todo-item'}>
+        <TodoCheckBox
           defaultChecked={completed}
-          className={'check-box'}
           onCheck={handleOnCheck}
-          style={{
-            display: 'block',
-            width: 24
-          }}
         />
-        <TextField
+        <TodoText
+          className={classNames({
+            today: isToday,
+            completed: completed
+          })}
           name={name}
           defaultValue={text}
           fullWidth
+          multiLine
+          disabled={completed}
+          lineThrough={completed}
+          redText={isToday}
           underlineStyle={{borderColor: 'transparent'}}
           underlineDisabledStyle={{border: 'none'}}
-          disabled={completed}
-          multiLine
           onChange={() => {
             this.handleOnChange(this.input.getValue())
           }}
           ref={ node => this.input = node}
-          className={classNames({
-            'todo-item-text': true,
-            'completed': completed,
-            'today': isToday
-          })}
         />
-        <a>
-          <Delete
-            className={'todo-item-delete'}
-            hoverColor={'#ff5722'}
-            style={{
-              display: 'inline',
-              width: 18,
-              height: 18
-            }}
-            onClick={handleDelete}
-          />
-        </a>
-      </li>
+        <DeleteBtn
+          onClick={handleDelete}
+        />
+      </TodoItem>
     )
   }
 }

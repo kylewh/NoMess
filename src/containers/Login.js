@@ -4,37 +4,29 @@ import { connect } from 'react-redux'
 import { login, logOut } from '../actions'
 import { getIsLogging, getLogError, getCurrentUser } from '../reducers'
 import TextField from 'material-ui/TextField'
-import FlatButton from 'material-ui/FlatButton'
-import RefreshIndicator from 'material-ui/RefreshIndicator'
-import CheckCircle from 'material-ui/svg-icons/action/check-circle'
 import '../style/login.css'
 
-const welcomInterface = (userInfo, onLogoutClick) => (
-  <div className='welcome'>
-    <CheckCircle />
-    <p>
-      欢迎回来!                                                                                                      {userInfo.attributes.username}
-      <br />
-      <br />
-      使用NoMess，立刻开始您的一天规划
-    </p>
-    <FlatButton
-      className='sign-out-btn'
-      label='退出登录'
-      onTouchTap={(e) => {
-        onLogoutClick()
-        console.log(userInfo)
-      }}
-    />
-  </div>
-)
+/**
+ * styled-component
+ */
+
+import Overlay from '../styled/Overlay'
+import LoginForm from '../styled/LoginForm'
+import LoginInfo from '../styled/LoginInfo'
+import Button from '../styled/Button'
+import Welcome from '../styled/Welcome'
+import LoginIndicator from '../styled/LoginIndicator'
 
 class Login extends Component {
 
-  errorMsgTranslator (err) {
+  errorMsgTranslator (err) {    
     switch (err.code) {
-      case 211:
-        return '无法找到该用户'
+      case -1:
+        return '您的网络貌似断线了 T_T'
+      case 202:
+        return '用户名已被占用'
+      case 210:
+        return '密码错误'
       case 219:
         return '失败次数超过限制,稍后再试'
       default:
@@ -42,34 +34,24 @@ class Login extends Component {
     }
   }
 
+  componentDidMount() {
+    console.log('login loaded')
+  }
+
+  componentWillReceiveProps (nextProps) {
+    if(this.props.isLogged !== nextProps.isLogged) {
+      this.props.history.push('/')
+    }
+  }
+
   render () {
     const { onLoginClick, isLogging, loginError, onLogoutClick, isLogged } = this.props
-    console.log(isLogged)
-
     return !isLogged ? (
-      <div className='todo-login-ct'>
-        {/** <img src="http://om8hmotom.bkt.clouddn.com/loginback.jpg" alt="" width='1000px;'/>**/}
-        <form
-          className={classNames({
-            'login': true,
-            'logging': isLogging
-          })}
-          autoComplete='false'
-          >
-          {/** <div className="login-indicator">
-              <div></div>
-              <div></div>
-              <div></div>
-              <span>Logging...</span>
-            </div>**/}
-          <span
-            className={classNames({
-              'title': true,
-              'error': loginError
-            })}
-            >
+      <Overlay login>
+        <LoginForm>
+          <LoginInfo error={loginError}>
             { loginError ? this.errorMsgTranslator(loginError) : 'Welcome'}
-          </span>
+          </LoginInfo>
           <TextField
             floatingLabelText='UserName'
             className='username'
@@ -85,18 +67,15 @@ class Login extends Component {
             ref={node => this.pswInput = node}
             />
           <br />
-          <RefreshIndicator
+          <LoginIndicator
             size={40}
             left={135}
             top={240}
             status={'loading'}
-            style={{
-              display: isLogging ? 'inline-block' : 'none'
-            }}
+            hide={!isLogging}
             />
-          <FlatButton
-            className='sign-in-btn'
-            label='登录'
+          <Button login bigger label='登录'
+            hide={isLogging}
             ref={node => this.submitBtn = node}
             onTouchTap={(e) => {
               onLoginClick(
@@ -104,16 +83,20 @@ class Login extends Component {
                   this.pswInput.input.value
                 )
             }}
-            />
-        </form>
-      </div>
+          />
+        </LoginForm>
+      </Overlay>
       )
       : (
-        <div className='todo-login-ct'>
-          <div className={'login'}>
-            { welcomInterface(isLogged, onLogoutClick) }
-          </div>
-        </div>
+        <Overlay login>
+          <LoginForm>
+            <Welcome
+              isLogged={isLogged}
+              username={isLogged.attributes.username}
+              onLogoutClick={onLogoutClick}
+            />
+          </LoginForm>
+        </Overlay>
       )
   }
 }
