@@ -21,27 +21,42 @@ const TodoItem = styled.li`
   }
 
   &.add-remove-item-enter {
-    opacity: 0!important;
-    transform: translate3d(-350px, 0, 0)!important;
+    opacity: 0;
+    -webkit-transform: translate3d(-350px, 0, 0);
+    transform: translate3d(-350px, 0, 0);
+    -moz-transform: translate3d(-350px, 0, 0);
+    -ms-transform: translate3d(-350px, 0, 0);
+    -o-transform: translate3d(-350px, 0, 0);
   }
 
   &.add-remove-item-enter.add-remove-item-enter-active {
-    opacity: 1!important;
-    transform: translate3d(0, 0, 0)!important;
-    transition-property: transform, opacity!important;
-    transition-duration: 250ms!important;
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition-property: opacity, -webkit-transform;
+    transition-property: opacity, -webkit-transform;
+    transition-property: transform, opacity;
+    transition-property: transform, opacity, -webkit-transform;
+    -webkit-transition-duration: 250ms;
+    transition-duration: 250ms;
   }
 
   &.add-remove-item.leave {
-    opacity: 1 !important;
-    transform: translate3d(0, 0, 0)!important;
-    transition-property: transform, opacity!important;
-    transition-duration: 250ms!important;
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition-property: opacity, -webkit-transform;
+    transition-property: opacity, -webkit-transform;
+    transition-property: transform, opacity;
+    transition-property: transform, opacity, -webkit-transform;
   }
 
   &.add-remove-item-leave.add-remove-item-leave-active {
-    opacity: 0!important;
-    transform: translate3d(-350px, 0, 0)!important;
+    opacity: 0;
+    -webkit-transform: translate3d(-350px, 0, 0);
+    transform: translate3d(-350px, 0, 0);
+    -webkit-transition-duration: 250ms;
+    transition-duration: 250ms;
   }
 `
 
