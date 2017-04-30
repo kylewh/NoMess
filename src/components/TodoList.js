@@ -2,7 +2,6 @@ import React from 'react'
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 import Todo from './Todo'
 import classNames from 'classnames'
-import '../style/todoList.css'
 
 
 /**
@@ -10,6 +9,7 @@ import '../style/todoList.css'
  */
 
 import TimeInfo from '../styled/TimeInfo'
+import List from '../styled/List'
 
 const TodoList = ({ dateInfo, todosByDue, toggleTodo, editTodo, deleteTodo }) => {
   const timeClass = classNames({
@@ -18,16 +18,12 @@ const TodoList = ({ dateInfo, todosByDue, toggleTodo, editTodo, deleteTodo }) =>
   })
   return (
     <CSSTransitionGroup
-      component='ul'
+      component={List}
       className='todo-list'
       transitionName='add-remove-item'
       transitionEnterTimeout={250}
       transitionLeaveTimeout={250}
     >
-      {/**<li className={timeClass}>
-        <em>{dateInfo.offsetDay}</em>
-        <span>{dateInfo.date} {dateInfo.day}</span>
-      </li>**/}
       <TimeInfo today={dateInfo.offsetDay === '今天'} >
         <em>{dateInfo.offsetDay}</em>
         <span>{dateInfo.date} {dateInfo.day}</span>
