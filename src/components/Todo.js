@@ -55,7 +55,7 @@ class Todo extends Component {
           onChange={() => {
             this.handleOnChange(this.input.getValue())
           }}
-          ref={ node => this.input = node}
+          innerRef={ node => this.input = node}
         />
         <DeleteBtn
           onClick={handleDelete}

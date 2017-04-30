@@ -1,6 +1,15 @@
 import React, { Component } from 'react'
 import TextField from 'material-ui/TextField'
 
+/**
+ * Styled-Components
+ */
+
+import Panel from '../styled/Panel'
+import Textarea from '../styled/Textarea'
+import Schedule from '../styled/Schedule'
+import DatePicker from '../styled/DatePicker'
+
 class AddTodoPanel extends Component {
   constructor (props) {
     super(props)
@@ -30,16 +39,14 @@ class AddTodoPanel extends Component {
 
   render () {
     return (
-      <form
-        className={'addTodo-panel'}
-      >
-        <textarea
+      <Panel className='addTodo-panel'>
+        <Textarea
           type={'submit'}
           placeholder={'又有事情忙啦?'}
-          ref={node => { this.textarea = node }}
+          innerRef={node => { this.textarea = node }}
           onKeyDown={this.handleKeyPressSubmit}
          />
-        <div className='schedulepicker'>
+        <Schedule>
           <div>
             <select
               className='bw-daypicker'
@@ -58,9 +65,8 @@ class AddTodoPanel extends Component {
           </div>
 
           <div>
-            <input
-              ref={node => this.datePicker = node}
-              className='datepicker'
+            <DatePicker
+              innerRef={node => this.datePicker = node}
               type='date'
               />
           </div>
@@ -74,9 +80,9 @@ class AddTodoPanel extends Component {
             />
           </div>
 
-        </div>
+        </Schedule>
 
-      </form>
+      </Panel>
     )
   }
 }

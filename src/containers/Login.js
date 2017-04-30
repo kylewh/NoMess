@@ -76,7 +76,7 @@ class Login extends Component {
             />
           <Button login bigger label='登录'
             hide={isLogging}
-            ref={node => this.submitBtn = node}
+            innerRef={node => this.submitBtn = node}
             onTouchTap={(e) => {
               onLoginClick(
                   this.usnInput.input.value,

@@ -1,34 +1,38 @@
 import React from 'react'
+import styled, { css } from 'styled-components'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
-import classNames from 'classnames'
-import '../style/button.css'
 
-const AddTodoButton = ({toggleAddToDo, isAdding}) => {
-  const basestyle = {
-    backgroundColor: '#ff5722',
-    position: 'fixed',
-    bottom: 84,
-    right: 20,
-    zIndex: 3
+const active = css`
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  background-color: #f44336 !important;
+`
+
+const FloatBtn = styled(({active, ...rest}) =><FloatingActionButton {...rest} />)`
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-transition: all 0.3s !important;
+  transition: all 0.3s !important;
+  position: fixed !important;
+  bottom: 84px !important;
+  right: 20px !important;
+  zIndex: 100;
+  & button {
+    ${props => props.active === true ?
+      active : ''
+    }
   }
+`
 
-  const className = classNames({
-    'addTodo-btn': true,
-    'bounce': !isAdding,
-    'addTodo-btn-active': isAdding
-  })
-
-  return (
-    <FloatingActionButton
-      secondary
-      style={basestyle}
-      onClick={() => toggleAddToDo()}
-      className={className}
-      >
-      <ContentAdd />
-    </FloatingActionButton>
-  )
-}
+const AddTodoButton = ({toggleAddToDo, isAdding}) => (
+  <FloatBtn
+    secondary
+    active={isAdding}
+    onClick={() => toggleAddToDo()}
+    >
+    <ContentAdd />
+  </FloatBtn>
+)
 
 export default AddTodoButton

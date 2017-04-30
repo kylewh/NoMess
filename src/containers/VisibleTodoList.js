@@ -2,15 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
-import TodoList from '../components/TodoList'
-import FetchError from '../components/FetchError'
 import * as actions from '../actions'
 import { getVisibleTodos, getErrorMessage, getIsFetching, getCurrentUser } from '../reducers'
-
-
-/**
- * Styled-components
- */
+import TodoList from '../components/TodoList'
 import Scroller from '../styled/Scroller'
 import ListContainer from '../styled/ListContainer'
 
@@ -49,7 +43,6 @@ class VisibleTodoList extends Component {
   render () {
     const { todos, ...rest } = this.props
     const keys = Object.keys(todos)
-
     return (
         <Scroller>
           <CSSTransitionGroup
@@ -81,7 +74,6 @@ class VisibleTodoList extends Component {
 
 const mapStateToProps = (state, { match }) => {
   const filter = match.params.filter || 'all'
-
   return {
     todos: getVisibleTodos(state, filter),
     errorMessage: getErrorMessage(state, filter),
