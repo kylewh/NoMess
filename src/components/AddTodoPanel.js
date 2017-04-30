@@ -6,23 +6,17 @@ import DatePicker from '../styled/DatePicker'
 import SubmitBtn from '../styled/SubmitBtn'
 
 class AddTodoPanel extends Component {
-  constructor (props) {
-    super(props)
-    this.handleKeyPressSubmit = this.handleKeyPressSubmit.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.quickPick = this.quickPick.bind(this)
-  }
 
   componentDidMount () {
     this.datePicker.value = this.injectDate()
   }
 
-  handleSubmit () {
+  handleSubmit = () => {
     const due = new Date(this.datePicker.value)
     this.props.addTodo(this.textarea.value.trim(), due)
   }
 
-  handleKeyPressSubmit ({keyCode}) {
+  handleKeyPressSubmit = ({keyCode}) => {
     const due = new Date(this.datePicker.value)
     if (keyCode === 13 && this.textarea.value.trim()) {
       this.props.addTodo(this.textarea.value.trim(), due)
@@ -33,7 +27,7 @@ class AddTodoPanel extends Component {
     return new Date().toJSON().slice(0, 10)
   }
 
-  quickPick () {
+  quickPick = () => {
     let msec = +new Date(this.datePicker.value) - 0
     const diff = this.select.value * 24 * 3600 * 1000
     msec += diff

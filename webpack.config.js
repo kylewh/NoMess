@@ -26,6 +26,7 @@ module.exports = {
     bundle: './src/index.js',
     vendor: VENDOR_LIST
   },
+  devtool: 'source-map',
   output: {
     filename: '[name].[chunkhash].js',
     path: path.resolve(__dirname, 'dist')
