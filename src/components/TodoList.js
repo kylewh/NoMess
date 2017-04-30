@@ -4,6 +4,13 @@ import Todo from './Todo'
 import classNames from 'classnames'
 import '../style/todoList.css'
 
+
+/**
+ * styled-components
+ */
+
+import TimeInfo from '../styled/TimeInfo'
+
 const TodoList = ({ dateInfo, todosByDue, toggleTodo, editTodo, deleteTodo }) => {
   const timeClass = classNames({
     'time-info': true,
@@ -17,10 +24,14 @@ const TodoList = ({ dateInfo, todosByDue, toggleTodo, editTodo, deleteTodo }) =>
       transitionEnterTimeout={250}
       transitionLeaveTimeout={250}
     >
-      <li className={timeClass}>
+      {/**<li className={timeClass}>
         <em>{dateInfo.offsetDay}</em>
         <span>{dateInfo.date} {dateInfo.day}</span>
-      </li>
+      </li>**/}
+      <TimeInfo today={dateInfo.offsetDay === '今天'} >
+        <em>{dateInfo.offsetDay}</em>
+        <span>{dateInfo.date} {dateInfo.day}</span>
+      </TimeInfo>
       {todosByDue.map(todo =>
         <Todo
           isToday={dateInfo.offsetDay === '今天'}
