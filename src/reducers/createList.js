@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux'
 import {
   ADD_TODO_SUCCESS,
+  ADD_TODO_FAILURE,
   TOGGLE_TODO_SUCCESS,
+  TOGGLE_TODO_FAILURE,
   DELETE_TODO_SUCCESS,
   DELETE_TODO_FAILURE,
   FETCH_TODOS_REQUEST,
@@ -65,6 +67,8 @@ const createList = (filter) => {
     switch (action.type) {
       case FETCH_TODOS_FAILURE:
       case DELETE_TODO_FAILURE:
+      case ADD_TODO_FAILURE:
+      case TOGGLE_TODO_FAILURE:
         return action.message
       case FETCH_TODOS_REQUEST:
       case FETCH_TODOS_SUCCESS:

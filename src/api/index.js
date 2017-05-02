@@ -16,29 +16,16 @@ export const fetchTodos = (filter) => {
       return query.ascending('due')
         .equalTo('owner', AV.User.current())
         .find()
-        .then(function (todos) {
-          return todos
-        }, function (error) {
-          // 异常处理
-        })
     case 'active':
       return query.ascending('due')
         .equalTo('completed', false)
         .equalTo('owner', AV.User.current())
         .find()
-        .then(todos => todos,
-          err => {
-            throw new Error(err)
-          })
     case 'completed':
       return query.ascending('due')
         .equalTo('completed', true)
         .equalTo('owner', AV.User.current())
         .find()
-        .then(todos => todos,
-          err => {
-            throw new Error(err)
-          })
     default:
       throw new Error(`Unknown Filter: ${filter}`)
   }
@@ -67,7 +54,9 @@ export const editTodo = (id, text) => {
       due: oldTodo.attributes.due
     })
     return updatedTodo.save()
-  }, function (error) {})
+  }, function (error) {
+    throw new Error(error)
+  })
 }
 
 export const toggleTodo = (id) => {

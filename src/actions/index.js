@@ -58,7 +58,11 @@ export const addTodo = (text, due) => (disptach) => {
     })
   },
   error => {
-    console.log(error.message)
+    disptach({
+      type: 'ADD_TODO_FAILURE',
+      filter: 'all',
+      message: error.message || 'Add todo fail, please retry'
+    })
   })
 }
 
@@ -71,6 +75,13 @@ export const editTodo = (id, text) => (dispatch) => {
     dispatch({
       type: 'EDIT_TODO_SUCCESS',
       response: normalize(receivedTodo, schema.todo)
+    })
+  },
+  error => {
+    disptach({
+      type: 'EDIT_TODO_FAILURE',
+      filter: 'all',
+      message: error.message || 'Edit fail, please retry.'
     })
   })
 }
@@ -85,6 +96,13 @@ export const toggleTodo = (id) => (dispatch) => {
       type: 'TOGGLE_TODO_SUCCESS',
       response: normalize(receivedTodo, schema.todo)
     })
+  },
+  error => {
+    dispatch({
+      type: 'TOGGLE_TODO_FAILURE',
+      filter: 'all',
+      message: error.message
+    })
   })
 }
 
@@ -97,9 +115,11 @@ export const deleteTodo = (id) => (dispatch) => {
           id: id
         })
       }
-    }, function (error) {
+    },
+    error => {
       dispatch({
         type: 'DELETE_TODO_FAILURE',
+        filter: 'all',
         message: error.message
       })
     })
