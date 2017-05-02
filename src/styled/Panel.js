@@ -10,7 +10,7 @@ const Panel = styled.form`
   box-sizing: border-box;
   border: none;
   padding-top: 58px;
-  background-color: #03A9F4 !important;
+  background-color: #2196f3 !important;
   @media all and (min-width:640px) {
     & {
       width: 500px;

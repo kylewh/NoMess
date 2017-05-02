@@ -58,7 +58,8 @@ const muiTheme = getMuiTheme({
     alternateTextColor: white
   },
   appBar: {
-    height: 60
+    height: 60,
+    color: '#2196f3'
   },
   'checkbox': {
     'boxColor': '#455a64',
