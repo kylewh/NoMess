@@ -126,6 +126,14 @@ export const deleteTodo = (id) => (dispatch) => {
 }
 
 export const login = (username, password) => (dispatch) => {
+  if ( !username || !password ) {
+    dispatch({
+      type: 'USER_LOGIN_FAILURE',
+      error: { clientErr: '请确保已经输入账号密码.' }
+    })
+    return
+  }
+
   dispatch({
     type: 'USER_LOGIN_REQUEST'
   })

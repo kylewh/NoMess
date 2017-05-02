@@ -11,7 +11,13 @@ import Welcome from '../styled/Welcome'
 import LoginIndicator from '../styled/LoginIndicator'
 
 class Login extends Component {
+
   errorMsgTranslator (err) {
+    
+    if (err.clientErr) {
+      return err.clientErr
+    }
+
     switch (err.code) {
       case -1:
         return '您的网络貌似断线了 T_T'
@@ -71,9 +77,9 @@ class Login extends Component {
             innerRef={node => this.submitBtn = node}
             onTouchTap={(e) => {
               onLoginClick(
-                  this.usnInput.input.value,
-                  this.pswInput.input.value
-                )
+                this.usnInput.input.value,
+                this.pswInput.input.value
+              )
             }}
           />
         </LoginForm>
