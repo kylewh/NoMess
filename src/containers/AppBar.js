@@ -24,7 +24,7 @@ const AppBar = ({toggleSideBar, isFetching, isLogged}) => (
       ? (<ProgressBar />) : ''
     }
     <TopBar
-      title={'Say no to mess'}
+      title={'ByeMess'}
       iconElementLeft={
         <NavButton onClick={toggleSideBar} />
       }
