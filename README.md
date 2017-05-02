@@ -46,6 +46,11 @@
 
 2. 对于components 和 container的分类市面上真是五花八门，对我而言，我更倾向跟随redux作者（真是帅啊）的定义： `It's up to whether the component is aware of Redux`，通俗点说，不需要connect至store的组件都不是container. 这样的确make sense， 不过在组件的分配上会显得有点奇怪，这就比较考功力和经验了。
 
+## Run
+`npm install`    
+
+`npm run start`
+
 ## Function
 
 - Single Page App
