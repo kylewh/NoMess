@@ -1,26 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
 import { IconMenu, MenuItem, IconButton } from 'material-ui'
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
+import { FlatButton } from 'material-ui'
+import Account from 'material-ui/svg-icons/action/account-circle'
 
-const MoreIcon = styled(MoreVertIcon)`
+const MyAccount = styled(Account)`
   fill: #fff !important;
 `
 
-const Logged = () => (
-  <IconMenu
-    iconButtonElement={
-      <IconButton><MoreIcon /></IconButton>
-    }
-    targetOrigin={{horizontal: 'right', vertical: 'top'}}
-    anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-  >
-    <MenuItem primaryText='Refresh' />
-    <MenuItem primaryText='Help' />
-    <MenuItem primaryText='Sign out' />
-  </IconMenu>
+const Logged = ({username, ...rest}) => (
+  <FlatButton
+    {...rest}
+    label={username}
+    icon={<Account />}
+  />
 )
 
-Logged.muiName = 'IconMenu'
+Logged.muiName = 'FlatButton'
 
 export default Logged

@@ -28,7 +28,7 @@ const AppBar = ({toggleSideBar, isFetching, isLogged}) => (
       iconElementLeft={
         <NavButton onClick={toggleSideBar} />
       }
-      iconElementRight={isLogged ? <Logged /> : <Login />}
+      iconElementRight={isLogged ? <Logged username={isLogged.attributes.username} /> : <Login />}
     />
   </div>
 )

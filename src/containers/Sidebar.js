@@ -5,6 +5,9 @@ import Drawer from 'material-ui/Drawer'
 import MenuItem from 'material-ui/MenuItem'
 import Account from 'material-ui/svg-icons/social/person'
 import MainList from 'material-ui/svg-icons/action/assignment'
+import Face from 'material-ui/svg-icons/action/face'
+import FontIcon from 'material-ui/FontIcon'
+import NormalLink from '../styled/NormalLink'
 import { getIsSidebarOpen, getCurrentUser } from '../reducers'
 import * as actions from '../actions'
 
@@ -20,7 +23,8 @@ const Sidebar = ({isSidebarOpen, toggleSideBar, isLogged}) => {
           height: 'calc( 100% - 60px )',
           top: 60,
           zIndex: 800,
-          boxShadow: '2px 2px 4px rgba(0,0,0,0.15)'
+          boxShadow: '2px 2px 4px rgba(0,0,0,0.15)',
+          textAlign: 'center'
         }}
         overlayStyle={{
           zIndex: 800,
@@ -34,7 +38,6 @@ const Sidebar = ({isSidebarOpen, toggleSideBar, isLogged}) => {
           }}
         >
           <MenuItem
-            style={{}}
             primaryText={isLogged ? isLogged.attributes.username : '登录'}
             leftIcon={<Account />}
             onClick={toggleSideBar}
@@ -52,6 +55,38 @@ const Sidebar = ({isSidebarOpen, toggleSideBar, isLogged}) => {
             onClick={toggleSideBar}
            />
         </NavLink>
+        <NormalLink
+          href='https://github.com/kylewh/NoMess'
+          target='_blank'
+        >
+          <MenuItem
+            primaryText={'Github'}
+            style={{color: '#3f51b5'}}
+            leftIcon={
+              <i 
+                className="fa fa-github"
+                aria-hidden="true"
+                style={{
+                  fontSize: 24,
+                  marginLeft: 12,
+                  color: '#3f51b5'
+                }}
+              >
+            </i>}
+            onClick={toggleSideBar}
+          />
+        </NormalLink>
+        <NormalLink
+          href='https://kylewh.github.io/'
+          target='_blank'
+        >
+          <MenuItem
+            primaryText={'Author\'s Blog'}
+            style={{color: '#E91E63'}}
+            leftIcon={<Face style={{fill: '#E91E63'}} />}
+            onClick={toggleSideBar}
+          />
+        </NormalLink>
       </Drawer>
     </div>
   )

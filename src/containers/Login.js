@@ -13,7 +13,7 @@ import LoginIndicator from '../styled/LoginIndicator'
 class Login extends Component {
 
   errorMsgTranslator (err) {
-    
+
     if (err.clientErr) {
       return err.clientErr
     }
