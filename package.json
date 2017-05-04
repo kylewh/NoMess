@@ -13,7 +13,6 @@
     "dev": "webpack-dev-server",
     "build": "npm run clean && webpack -p",
     "clean": "rimraf dist",
-    "postinstall": "webpack -p",
     "start": "node server.js"
   },
   "dependencies": {
