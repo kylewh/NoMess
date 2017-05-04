@@ -1,13 +1,18 @@
-const express = require('express')
+var express = require('express');
+var AV = require('leanengine');
 const path = require('path')
-const port = process.env.LEANCLOUD_APP_PORT || process.env.PORT || 8080
-const app = express()
 
+AV.init({
+  appId: process.env.LEANCLOUD_APP_ID || 'fHlQK5K3zQdGFO0h4jPg7Azk-gzGzoHsz',
+  appKey: process.env.LEANCLOUD_APP_KEY || 'Tpz60WuMnnBGJGh3hr6os321',
+  masterKey: process.env.LEANCLOUD_APP_MASTER_KEY || 'gf5hWN1qI2XreblTMLNB80TP'
+});
+
+var app = express();
+app.use(AV.express());
 app.use(express.static(path.resolve(__dirname, './dist')))
-
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, './dist/index.html'))
 })
-
-app.listen(port)
+app.listen(process.env.LEANCLOUD_APP_PORT);
 console.log('Server started')
