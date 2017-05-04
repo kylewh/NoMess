@@ -14,7 +14,6 @@ const VENDOR_LIST = [
   'material-ui',
   'underscore',
   'normalizr',
-  'node-uuid',
   'leancloud-storage',
   'classnames',
   'history',

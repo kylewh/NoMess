@@ -23,7 +23,6 @@
     "history": "^4.6.1",
     "leancloud-storage": "^2.1.4",
     "material-ui": "^0.17.4",
-    "node-uuid": "^1.4.8",
     "normalizr": "^3.2.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
