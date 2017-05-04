@@ -5,6 +5,10 @@
   "main": "index.js",
   "author": "Kylewh",
   "license": "MIT",
+  "engines": {
+    "node": "7.6.0",
+    "npm": "4.1.2"
+  },
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "npm run clean && webpack -p",
