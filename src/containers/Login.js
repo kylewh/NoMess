@@ -43,10 +43,18 @@ class Login extends Component {
   }
 
   render () {
-    const { onLoginClick, isLogging, loginError, onLogoutClick, isLogged } = this.props
+    const { onLogin, isLogging, loginError, onLogoutClick, isLogged } = this.props
     return !isLogged ? (
       <Overlay login>
-        <LoginForm>
+        <LoginForm
+          onSubmit={(e) => {
+            e.preventDefault()
+            onLogin(
+              this.usnInput.input.value,
+              this.pswInput.input.value
+            )}
+          }
+        >
           <LoginInfo error={loginError}>
             { loginError ? this.errorMsgTranslator(loginError) : 'Welcome'}
           </LoginInfo>
@@ -73,10 +81,12 @@ class Login extends Component {
             hide={!isLogging}
             />
           <Button login bigger label='登录'
+            type='submit'
             hide={isLogging}
             innerRef={node => this.submitBtn = node}
             onTouchTap={(e) => {
-              onLoginClick(
+              e.preventDefault()
+              onLogin(
                 this.usnInput.input.value,
                 this.pswInput.input.value
               )
@@ -100,7 +110,7 @@ class Login extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  onLoginClick (username, password) {
+  onLogin (username, password) {
     dispatch(login(username, password))
   },
   onLogoutClick () {

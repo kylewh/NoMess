@@ -1,3 +1,4 @@
+import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 const fadeInUp = keyframes`
@@ -12,7 +13,7 @@ const fadeInUp = keyframes`
     transform: none;
   }
 `
-const LoginForm = styled.form`
+const LoginForm = styled(props => <form {...props}></form>)`
   font-family: "Helvetica Neue", "Arial", " Segoe UI", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif !important;
   position: absolute;
   top: 0;
