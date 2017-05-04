@@ -53,6 +53,7 @@ module.exports = {
     extensions: ['.json', '.js', '.jsx', '.css']
   },
   plugins: [
+    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest']
     }),

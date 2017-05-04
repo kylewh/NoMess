@@ -6,12 +6,15 @@
   "author": "Kylewh",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "npm run del && webpack -p",
-    "del": "rimraf dist"
+    "dev": "webpack-dev-server",
+    "build": "npm run clean && webpack -p",
+    "clean": "rimraf dist",
+    "postinstall": "webpack -p",
+    "start": "node server.js"
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "express": "^4.15.2",
     "global": "^4.3.2",
     "history": "^4.6.1",
     "leancloud-storage": "^2.1.4",
