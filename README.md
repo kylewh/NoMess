@@ -12,6 +12,11 @@
 
 这个App的UI直接参考了知乎[@黄玄](https://www.zhihu.com/people/huxpro/answers)的Vue写的TodoApp，已经获得他本人的许可。设计活儿太磨人，本着熟练react&redux的项目实战的目的，UI和交互就没有想花太多时间去设计，直接照着样子写了一个，他的代码我可一个字都没看过，别喷我山寨哈哈哈。
 
+
+## 已部署版本（2017.05.04更新
+heroku国内太卡了，还是直接用了Leancloud。    
+[点这里点这里：Byemess](https://byemess.leanapp.cn/)
+
 ## 源代码
 [Github](https://github.com/kylewh/NoMess)    
 如果对你有有所启发或者帮助，送我一个star吧 :)    
